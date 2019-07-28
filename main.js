@@ -2,30 +2,30 @@ console.log('GOOD LUCK 👩‍💻 👨‍💻')
 // Please focus
 
 /* Q1:
-Usind Map
+Using Map
 Create a function called MultiByNum1OrNum2
 that takes an array of numbers and two numbers as a parameter
 and return a new array after mutiple each elemnt to the num1
 if the module of this elemnt to num1 is 0
 otherwise multiple the elemt to num2
-
 var arrOfNum1 = [1,5,2]
 Example: 
 MultiByNum1OrNum2(arrOfNum1,2,6)
 Output => 
 [6,30,4]
-
 var arrOfNum2 = [7,2,50]
 Example: 
 MultiByNum1OrNum2(arrOfNum2,7,10)
 Output => 
 [49, 20, 500]
-
 */
 
-function MultiByNum1OrNum2() {
-  // WRITE YOUR CODE UNDER THIS LINE         
-}
+function MultiByNum1OrNum2(arr,num1,num2){
+  return arr.map(x => {
+    if (x%num1==0){return x * num2;}
+        else{return  x * num2};
+  });
+};
 
 /* Q2:
 Using Filter
@@ -34,7 +34,6 @@ that takes an array of objects and 2 numbers as a parameter
 and return a new array with the object has 
 a name longer than the first parameter
 and in the same time less than the second parameters 
-
 var arrOfObj1 = [
   { name: "alex" ,age:22},
   { name: "mercer",age:26},
@@ -48,7 +47,6 @@ Output =>
 [ 
   { name: "mercer",age:26},
 ]
-
 Example: 
 longerAndYounger(arrOfObj1,3,30)
 Output =>
@@ -58,9 +56,11 @@ Output =>
 ]
 */
 
-function longerAndYounger() {
-  // WRITE YOUR CODE UNDER THIS LINE         
-}
+function longerAndYounger(arr,num1,num2){
+  return arr.filter(thisParameter => {
+    if(thisParameter.name.length > num1 && thisParameter.age < num2){return thisParameter.name + "," + thisParameter.age};
+  });
+};
 
 /* Q3:
 Using Reduce
@@ -69,7 +69,6 @@ that takes an array of objects of strings and a number
 and return a string have the name of object that 
 equal to the index that passesd in the parameter 
 and with all the food from other objects
-
 var arrOfObj2 = [
   { name: "alex", food: "fried chiken" },
   { name: "mercer", food: "pizaa" },
@@ -77,21 +76,25 @@ var arrOfObj2 = [
   { name: "zaheer", food: "hot dog" },
   { name: "elizabeth", food: "eggs" }
 ]
-
 Example:  
 nameAndAllFoods(arrOfObj2,0)
 Output =>
 "alex, fried chiken, pizaa, burger, hot dog, eggs"
-
 Example:
 nameAndAllFoods(arrOfObj2,2)
 Output =>
 "alice, fried chiken, pizaa, burger, hot dog, eggs"
   
 */
-function nameAndAllFoods() {
-  // WRITE YOUR CODE UNDER THIS LINE         
-}
+
+function nameAndAllFoods(arr,num) {
+return arr.reduce((acc,cv) => {acc = arr[num].name;
+  cv = arr.map(thisParameter => {
+    return thisParameter.food
+  });
+  return acc + "," + cv;
+  });
+};
 
 
 /*
@@ -102,11 +105,9 @@ You need to write the solution in the q4.html
   b. button: with text 'Red'    with id => "no"
   c. button: with text 'Green'  with id => "yes"
   d. change the title to Q4
-
 2. Add these style int he same file q4.html:
   a. id => "no"     the color of the background  =>   Red
   b. id => "yes"    the color of the background  =>   Green
-
 3. Using jQuery add these logic to q4.html in the same file:
   a. when click on the button with id "no"  => cahnge the color of the div with class "main" to red
   b. when click on the button with id "yes" => cahnge the color of the div with class "main" to green
